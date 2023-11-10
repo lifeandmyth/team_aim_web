@@ -1,0 +1,67 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.1.4'
+	id 'io.spring.dependency-management' version '1.1.3'
+}
+
+group = 'com.project.aim'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+	
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	
+	/* 로그인 암호화 */
+	//implementation 'org.springframework.security:spring-security-core:5.5.0'
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.2'
+	
+	/* jwt토큰 로그인 */
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.2'
+    
+    implementation 'com.auth0:java-jwt:3.18.2'
+		
+	
+	/* 웹소켓 */
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+
+  	implementation 'org.webjars:webjars-locator-core'
+	implementation 'org.webjars:sockjs-client:1.5.1'
+	implementation 'org.webjars:stomp-websocket:2.3.4'
+
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'com.h2database:h2'
+	runtimeOnly 'com.mysql:mysql-connector-j'
+	annotationProcessor 'org.projectlombok:lombok'
+	
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	// testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.2'
+	testImplementation 'org.springframework.security:spring-security-test'
+	
+	/* 파일 업로드를 위한 lib */
+	implementation group: 'commons-io', name: 'commons-io', version: '2.11.0'
+	/* RESTful API 문서화 */
+	implementation 'org.springdoc:springdoc-openapi-ui:1.6.14'
+}
+dependencies {
+    implementation group: 'org.modelmapper', name: 'modelmapper', version: '3.1.0'
+}
+
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
